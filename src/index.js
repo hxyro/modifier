@@ -25,10 +25,12 @@ const html = (url, title) =>
 
 app.get('/', (req, res) => {
   if (isbot(req.get('user-agent'))) {
+    console.log("It is a bot");
     res.send(html('https://github.com/hxyro/webpai-app', 'webpai'))
   }
   else {
     res.redirect("https://www.google.com");
+    console.log("NOT BOT");
   }
 
 }
