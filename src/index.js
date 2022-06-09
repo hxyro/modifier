@@ -1,35 +1,44 @@
-import express from 'express'
+import express, { urlencoded } from 'express'
 import isbot from 'isbot'
+import dotenv from 'dotenv'
+import { markup } from './markup'
 
-const PORT = 3000
+//import { model } from './models'
+//model.user
+//model.modifier
+
+//import { db } from './utils'
+//db.connect(uri)
+
+dotenv.config()
+const PORT = process.env.PORT | 3000
+//const MONGO_URI = process.env.MONGO_URI
 const app = express()
 
-const html = (url, title) =>
-  `<html lang="en">
-    <head>
-      <title>nut</title>
-	  	<meta http-equiv="refresh" content="0; url=${url}"/>
-  		<meta property="og:type" content="object" />
-      <meta property="og:url" content="${url}" />
-      <meta property="og:title" content="${title}" />
-		  <meta property="og:description" content="Webpai is a decentralized image-board website hosted on the Polygon." />
-  		<meta property="og:image" content="https://webpai.vercel.app/webpai-new.png"/>
-  		<meta property="og:image:width" content="1200" />
-  		<meta property="og:image:height" content="628" />
-    </head>
-    <body style="background: black">
-      <h1 style="text-align: center; color: red">fuck yeah</h1>
-      <h1 style="text-align: center; color: blue">redirecting....</h1>
-    </body>
-  </html>`
+app.disable('x-powered-by')
+app.use(urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   if (isbot(req.get('user-agent'))) {
     console.log('It is a bot')
-    res.send(html('https://github.com/hxyro/webpai-app', 'webpai'))
+    res.send(
+      markup.OgImage(
+        'https://webpai.vercel.app/',
+        'https://webpai.vercel.app/webpai-new.png',
+        'webpai',
+        'nut'
+      )
+    )
   } else {
-    res.redirect('https://www.google.com')
+    res.redirect('https://webpai.vercel.app/')
     console.log('NOT BOT')
   }
 })
-app.listen(PORT, () => console.log(`listening: ${PORT}`))
+app.post('/create', (req, res) => {
+  console.log(req.body)
+  res.end()
+})
+/*
+curl -X POST http://localhost:3000/create -d 'url=https://webpai.vercel.app/&image_url=https://webpai.vercel.app/webpai-new.png&title=webpai&descri[tion=nut'
+*/
+app.listen(PORT, () => console.log(`listening on: ${PORT}`))

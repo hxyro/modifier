@@ -1,5 +1,5 @@
-import OgImage from 'markup/OgImage'
-import OgVideo from 'markup/OgVideo'
-import OgAudeo from 'markup/OgAudio'
+import OgImage from './OgImage'
+import OgVideo from './OgVideo'
+import OgAudeo from './OgAudio'
 
 export const markup = { OgImage, OgVideo, OgAudeo }
