@@ -1,7 +1,7 @@
 import express, { urlencoded } from 'express'
-import isbot from 'isbot'
 import dotenv from 'dotenv'
-import { markup } from './markup'
+
+import { router } from 'routes/users.js'
 
 //import { model } from './models'
 //model.user
@@ -18,26 +18,7 @@ const app = express()
 app.disable('x-powered-by')
 app.use(urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-  if (isbot(req.get('user-agent'))) {
-    console.log('It is a bot')
-    res.send(
-      markup.OgImage(
-        'https://webpai.vercel.app/',
-        'https://webpai.vercel.app/webpai-new.png',
-        'webpai',
-        'nut'
-      )
-    )
-  } else {
-    res.redirect('https://webpai.vercel.app/')
-    console.log('NOT BOT')
-  }
-})
-app.post('/create', (req, res) => {
-  console.log(req.body)
-  res.end()
-})
+app.use('/', router)
 /*
 curl -X POST http://localhost:3000/create -d 'url=https://webpai.vercel.app/&image_url=https://webpai.vercel.app/webpai-new.png&title=webpai&descri[tion=nut'
 */
