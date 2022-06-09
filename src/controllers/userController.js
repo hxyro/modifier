@@ -24,7 +24,7 @@ export const redirect_url_get = (req, res) => {
 export const create_url_post = [
   body('urlCode')
     .trim()
-    .isAlphanumeric('-')
+    .isAlphanumeric('en-US', { ingore: '-' })
     .withMessage('UrlCode contains invalid characters')
     .escape(),
 
@@ -32,15 +32,15 @@ export const create_url_post = [
 
   body('title')
     .trim()
-    .isLength({ min: 1, max: 30 })
-    .withMessage('1 <= tilte <= 30')
+    .isLength({ max: 30 })
+    .withMessage('tilte <= 30')
     .escape(),
 
   body('asset_url').trim().isURL().withMessage('Invalid image url').escape(),
 
   body('description')
     .trim()
-    .isLength({ min: 0, max: 100 })
+    .isLength({ max: 100 })
     .withMessage('description too long')
     .escape(),
 
@@ -57,7 +57,7 @@ export const create_url_post = [
 export const create_user_post = [
   body('userName')
     .trim()
-    .isAlphanumeric('-')
+    .isAlphanumeric('en-US', { ingore: '-' })
     .withMessage('Username must contain only alphanumeric characters')
     .escape(),
 
