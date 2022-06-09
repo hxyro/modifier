@@ -1,18 +1,16 @@
 import mongoose from 'mongoose'
 
+const reqString = {
+  type: String,
+  required: true,
+}
+
 const userSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    modifiers: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+    name: reqString,
+    modifier: [{ type: mongoose.Schema.Types.ObjectId, ref: 'modifier' }],
   },
   { timestamps: true }
 )
 
-export default userSchema
+export const user = mongoose.model('user', userSchema)
