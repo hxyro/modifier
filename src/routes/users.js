@@ -1,12 +1,14 @@
-import express from 'express';
-import { body, validationResult } from 'express-validator';
+import express from 'express'
+import { body, validationResult } from 'express-validator'
 
-let router = express.Router();
+let router = express.Router()
 
 router.get('/:userName/:urlCode', (req, res, next) => {
-  const userName = req.params.userName;
-  const urlCode = req.params.urlCode;
-});
+  const userName = req.params.userName
+  const urlCode = req.params.urlCode
+
+  res.send('TBD')
+})
 
 router.post(
   '/',
@@ -28,13 +30,12 @@ router.post(
     .withMessage('description too long')
     .escape(),
   (req, res) => {
-    const errors = validationResult(req);
+    const errors = validationResult(req)
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() })
     }
-
-    res.send('TBD');
+    res.send('TBD')
   }
-);
+)
 
-module.exports = router;
+module.exports = router
