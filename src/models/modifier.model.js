@@ -6,15 +6,14 @@ const reqString = {
 }
 const reqNumber = {
   type: Number,
-  required: true,
   default: 0,
 }
 
 const modifierSchema = new mongoose.Schema(
   {
-    owner: reqString,
-    name: reqString,
-    url: reqString,
+    user_name: reqString,
+    modifier_name: reqString,
+    redirect_url: reqString,
     asset_url: reqString,
     title: reqString,
     description: reqString,
@@ -23,4 +22,6 @@ const modifierSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-export const modifier = mongoose.model('modifier', modifierSchema)
+const modifier = mongoose.model('modifier', modifierSchema)
+
+export default modifier

@@ -1,8 +1,10 @@
 import mongoose from 'mongoose'
 
-export const connect = (url) => {
+const connect = (url) => {
   return mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
 }
+
+export default connect

@@ -23,5 +23,5 @@ const markup = (url, audio_url, title, description) =>
     <body style="background: #202630">
       <h1 style="text-align: center; color: #c678dd; margin-top: 400px">Redirecting....</h1>
     </body>
-  </html>`;
-export default markup;
+  </html>`
+export default markup

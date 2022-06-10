@@ -1,3 +1,3 @@
-import { connect } from './db.connect'
+import connect from './db.connect'
 
 export const db = { connect }

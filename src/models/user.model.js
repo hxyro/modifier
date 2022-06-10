@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const reqString = {
   type: String,
   required: true,
+  unique: true,
 }
 
 const userSchema = new mongoose.Schema(
@@ -13,4 +14,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-export const user = mongoose.model('user', userSchema)
+const user = mongoose.model('user', userSchema)
+
+export default user
