@@ -1,6 +1,6 @@
 import express, { urlencoded } from 'express'
 import dotenv from 'dotenv'
-import { router } from './routes/route'
+import { router } from './routes'
 import { db } from './utils'
 
 dotenv.config()
