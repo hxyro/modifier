@@ -1,5 +1,8 @@
 import { error, info } from '../utils'
 import isbot from 'isbot'
+import markup from '../markup/OgImage'
+import urlencoded from 'body-parser/lib/types/urlencoded'
+const { performance } = require('perf_hooks')
 
 const index = (_req, res) => {
   res.send('Homepage').end()
@@ -18,7 +21,10 @@ const createUser = (model) => async (req, res) => {
 const deleteUser = (model) => async (req, res) => {
   const { user_name } = req.params
   try {
-    const user = await model.user.findOneAndDelete({ name: user_name }).exec()
+    const user = await model.user
+      .findOneAndDelete({ name: user_name })
+      .orFail()
+      .exec()
     if (user) {
       res.json(info.Removed(user_name)).end()
     } else {
@@ -36,13 +42,10 @@ const getUser = (model) => async (req, res) => {
     const user = await model.user
       .findOne({ name: user_name })
       .populate('modifier')
+      .orFail()
       .exec()
-    if (user) {
-      console.log(user)
-      res.json(user).end()
-    } else {
-      res.redirect('/')
-    }
+    console.log(user)
+    res.json(user).end()
   } catch (e) {
     console.log(e)
     res.json(error.ServerError).end()
@@ -84,20 +87,17 @@ const deleteModifier = (model) => async (req, res) => {
   try {
     const modifier = await model.modifier
       .findOneAndDelete({ user_name, modifier_name })
+      .orFail()
       .exec()
-    if (modifier) {
-      await model.user.findOneAndUpdate(
-        { name: user_name },
-        {
-          $pull: {
-            modifier: modifier._id,
-          },
-        }
-      )
-      res.json(modifier).end()
-    } else {
-      res.json(error.ModifierDoesNotExist(modifier_name))
-    }
+    await model.user.findOneAndUpdate(
+      { name: user_name },
+      {
+        $pull: {
+          modifier: modifier._id,
+        },
+      }
+    )
+    res.json(modifier).end()
   } catch (e) {
     console.log(e)
     res.json(error.ServerError).end()
@@ -105,21 +105,34 @@ const deleteModifier = (model) => async (req, res) => {
 }
 
 const redirect = (model) => async (req, res) => {
-  const { user_name, modifier_name } = req.params
-  const modifier = await model.modifier
-    .findOne({ user_name, modifier_name })
-    .exec()
-  if (modifier) {
+  let startTime = performance.now()
+  try {
+    const { user_name, modifier_name } = req.params
+    const modifier = await model.modifier
+      .findOne({ user_name, modifier_name })
+      .orFail()
+      .exec()
+
     if (isbot(req.get('user-agent'))) {
-      // TODO: Render template string
-      res.send('BOT')
+      const { redirect_url, asset_url, title, description } = modifier
+      res.send(
+        markup(
+          decodeURI(redirect_url),
+          decodeURI(asset_url),
+          title,
+          description
+        )
+      )
     } else {
-      // TODO: get original url
-      res.send('ehh')
+      res.redirect(decodeURI(modifier.redirect_url))
     }
-  } else {
+  } catch (e) {
+    console.log(e)
     res.redirect('/')
   }
+
+  let endTime = performance.now()
+  console.log(`Call to redirect took ${endTime - startTime} milliseconds`)
 }
 
 export default {
