@@ -39,7 +39,7 @@ const userInDB = (model) => async (req, res, next) => {
   } else {
     const { user_name } = req.body
     try {
-      const user = await model.user.findOne({ name: user_name.trim() })
+      const user = await model.user.findOne({ name: user_name })
       if (user) {
         res.json(error.NameTaken(user_name)).end()
       } else {
