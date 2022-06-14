@@ -28,7 +28,7 @@ const deleteUser = (model) => async (req, res) => {
     if (user) {
       res.json(info.Removed(user_name)).end()
     } else {
-      res.json(error.UserDoesNotExist(user_name)).end()
+      res.json(error.DoesNotExists('user', user_name)).end()
     }
   } catch (e) {
     console.log(e)

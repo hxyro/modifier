@@ -45,15 +45,11 @@ const userInDB = (model) => async (req, res, next) => {
     } else {
       next()
     }
-  } catch (err) {
-    console.log(err)
+  } catch (e) {
+    console.log(e)
     res.json(error.ServerError).end()
   }
 }
-
-const deleteUser = () => {}
-
-const getUser = () => {}
 
 const modifierInDB = (model) => async (req, res, next) => {
   const msg = validationResult(req)
@@ -62,23 +58,26 @@ const modifierInDB = (model) => async (req, res, next) => {
   }
   const { user_name, modifier_name } = req.params
   try {
-    await model.user.findOne({ name: user_name }).orFail()
+    await model.user
+      .findOne({ name: user_name })
+      .orFail(new Error(error.name, { message: user_name }))
     const modifier = await model.modifier
       .findOne({ modifier_name, user_name })
       .exec()
     if (modifier) {
-      res.json(error.ModifierExist(modifier_name)).end()
+      res.json(error.AlreadyExists('modifier', modifier_name)).end()
     } else {
       next()
     }
   } catch (e) {
+    if (e.name === error.name) {
+      res.send(error.DoesNotExists('user', e.message))
+    }
     // res.json(error.UserDoesNotExist(user_name)).end()
     console.log(e)
     res.json(error.ServerError).end()
   }
 }
-
-const deleteModifier = () => {}
 
 export default {
   trimmed,
@@ -88,8 +87,5 @@ export default {
   validUrl,
   maxLength,
   userInDB,
-  deleteUser,
-  getUser,
   modifierInDB,
-  deleteModifier,
 }
