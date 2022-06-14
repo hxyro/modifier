@@ -33,8 +33,10 @@ router.post(
   '/:user_name/:modifier_name',
   validator.required(['redirect_url', 'asset_url', 'title', 'description']),
   validator.validUrl(['redirect_url', 'asset_url']),
-  validator.maxLength('title', 30),
-  validator.maxLength('description', 300),
+  validator.maxLength([
+    { field: 'title', len: 30 },
+    { field: 'description', len: 300 },
+  ]),
   validator.createModifier(model),
   controller.createModifier(model)
 )

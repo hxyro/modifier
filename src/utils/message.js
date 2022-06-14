@@ -8,6 +8,7 @@ const error = {
   NotValid: (name) => `Error: '${name}' contains invalid charactersis.`,
   InvalidUrl: (name) => `Error: '${name}': Invalid url`,
   ServerError: `Error: Server Error.`,
+  LengthExceeded: (obj) => '${obj.field} should be less than ${obj.len}',
 }
 
 const info = {

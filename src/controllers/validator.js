@@ -18,8 +18,13 @@ const validUrl = (values) =>
   values.map((value) =>
     body(value).trim().isURL().withMessage(error.InvalidUrl(value))
   )
-const maxLength = (value, length) =>
-  body(value).trim().isLength({ max: length }).withMessage('tilte <= 30')
+const maxLength = (values) =>
+  values.map((value) =>
+    body(value.field)
+      .trim()
+      .isLength({ max: value.len })
+      .withMessage(error.LengthExceeded(value))
+  )
 
 const createUser = (model) => async (req, res, next) => {
   const msg = validationResult(req)
