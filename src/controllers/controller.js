@@ -1,7 +1,7 @@
 import { error, info } from '../utils'
 import isbot from 'isbot'
 import markup from '../markup/OgImage'
-import urlencoded from 'body-parser/lib/types/urlencoded'
+
 const { performance } = require('perf_hooks')
 
 const index = (_req, res) => {

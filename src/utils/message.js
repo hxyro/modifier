@@ -1,7 +1,7 @@
 const error = {
   NotFound: 'not found',
   NameTaken: (name) => `Error: The name '${name}' is already taken.`,
-  DoesNotExist: (name, value) => `Error: modifier '${name}' dose not exist.`,
+  DoesNotExist: (name, value) => `Error: ${name} '${value}' dose not exist.`,
   AlreadyExist: (name, value) =>
     `Error: The ${name} '${value}' already exists on this account.`,
   IsRequired: (name) => `Error: '${name}' is required property`,
