@@ -41,7 +41,7 @@ router.post(
     { field: 'description', len: 300 },
   ]),
   validator.escaped(['title', 'description']),
-  validator.createModifier(model),
+  validator.modifierInDB(model),
   controller.createModifier(model)
 )
 
