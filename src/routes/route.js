@@ -13,9 +13,11 @@ router.get('/', controller.index)
 // -> curl -X POST http://localhost:3000/alter -d 'user_name=hxyro'
 router.post(
   '/alter',
+  validator.trimmed(['user_name']),
   validator.required(['user_name']),
   validator.validName(['user_name']),
-  validator.createUser(model),
+  validator.escaped(['user_name']),
+  validator.userInDB(model),
   controller.createUser(model)
 )
 
@@ -31,12 +33,14 @@ router.get('/:user_name', controller.getUser(model))
 // -> curl -X POST http://localhost:3000/hxyro/webpai -d 'redirect_url=https://webpai.vercel.app/&asset_url=https://webpai.vercel.app/webpai-new.png&title=webpai&description=nut'
 router.post(
   '/:user_name/:modifier_name',
+  validator.trimmed(['redirect_url', 'asset_url', 'title', 'description']),
   validator.required(['redirect_url', 'asset_url', 'title', 'description']),
   validator.validUrl(['redirect_url', 'asset_url']),
   validator.maxLength([
     { field: 'title', len: 30 },
     { field: 'description', len: 300 },
   ]),
+  validator.escaped(['redirect_url', 'asset_url', 'title', 'description']),
   validator.createModifier(model),
   controller.createModifier(model)
 )
