@@ -40,7 +40,7 @@ router.post(
     { field: 'title', len: 30 },
     { field: 'description', len: 300 },
   ]),
-  validator.escaped(['redirect_url', 'asset_url', 'title', 'description']),
+  validator.escaped(['title', 'description']),
   validator.createModifier(model),
   controller.createModifier(model)
 )
