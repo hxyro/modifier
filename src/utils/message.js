@@ -1,14 +1,14 @@
 const error = {
+  NotFound: 'not found',
   NameTaken: (name) => `Error: The name '${name}' is already taken.`,
-  UserDoesNotExist: (name) => `Error: user '${name}' dose not exist.`,
-  ModifierDoesNotExist: (name) => `Error: modifier '${name}' dose not exist.`,
-  ModifierExist: (name) =>
-    `Error: The modifier '${name}' already exists on this account.`,
+  DoesNotExist: (name, value) => `Error: ${name} '${value}' dose not exist.`,
+  AlreadyExist: (name, value) =>
+    `Error: The ${name} '${value}' already exists on this account.`,
   IsRequired: (name) => `Error: '${name}' is required property`,
   NotValid: (name) => `Error: '${name}' contains invalid charactersis.`,
   InvalidUrl: (name) => `Error: '${name}': Invalid url`,
   ServerError: `Error: Server Error.`,
-  LengthExceeded: (obj) => '${obj.field} should be less than ${obj.len}',
+  LengthExceeded: (obj) => `${obj.field} should be less than ${obj.len}`,
 }
 
 const info = {
