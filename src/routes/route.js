@@ -27,12 +27,12 @@ router.delete('/alter/:user_name', controller.deleteUser(model))
 
 // Get User Details
 // -> curl -X GET http://localhost:3000/hxyro
-router.get('/:user_name', controller.getUser(model))
+router.get('/u/:user_name', controller.getUser(model))
 
 // Create Modifier
 // -> curl -X POST http://localhost:3000/hxyro/webpai -d 'redirect_url=https://webpai.vercel.app/&asset_url=https://webpai.vercel.app/webpai-new.png&title=webpai&description=nut'
 router.post(
-  '/:user_name/:modifier_name',
+  '/u/:user_name/:modifier_name',
   validator.trimmed(['redirect_url', 'asset_url', 'title', 'description']),
   validator.required(['redirect_url', 'asset_url', 'title', 'description']),
   validator.validUrl(['redirect_url', 'asset_url']),
@@ -40,14 +40,14 @@ router.post(
     { field: 'title', len: 30 },
     { field: 'description', len: 300 },
   ]),
-  validator.escaped(['redirect_url', 'asset_url', 'title', 'description']),
-  validator.createModifier(model),
+  validator.escaped(['title', 'description']),
+  validator.modifierInDB(model),
   controller.createModifier(model)
 )
 
 // Delete Modifier
 // -> curl -X DELETE http://localhost:3000/hxyro/webpai
-router.delete('/:user_name/:modifier_name', controller.deleteModifier(model))
+router.delete('/u/:user_name/:modifier_name', controller.deleteModifier(model))
 
 // Redirect
 // -> curl -X GET http://localhost:3000/hxyro/webpai
