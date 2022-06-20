@@ -12,6 +12,7 @@
     "lint": "eslint \"src/**/*.js\" --quiet"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.2",
     "@babel/eslint-parser": "^7.18.2",
     "@babel/node": "^7.17.10",
@@ -21,7 +22,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.16",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "regenerator-runtime": "^0.13.9"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
