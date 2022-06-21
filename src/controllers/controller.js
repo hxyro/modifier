@@ -1,6 +1,7 @@
 import { error, info } from '../utils'
 import isbot from 'isbot'
 import markup from '../markup/OgImage'
+import { getTemporaryUrl } from '../utils'
 
 const { performance } = require('perf_hooks')
 
@@ -135,6 +136,11 @@ const redirect = (model) => async (req, res) => {
   console.log(`Call to redirect took ${endTime - startTime} milliseconds`)
 }
 
+const s3Url = async (req, res) => {
+  const url = await getTemporaryUrl()
+  res.send(`${url}`).end()
+}
+
 export default {
   index,
   createUser,
@@ -143,4 +149,5 @@ export default {
   createModifier,
   deleteModifier,
   redirect,
+  s3Url,
 }

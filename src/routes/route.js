@@ -54,4 +54,7 @@ router.delete('/u/:user_name/:modifier_name', controller.deleteModifier(model))
 // -> curl -X GET http://localhost:3000/hxyro/webpai
 router.get('/:user_name/:modifier_name', controller.redirect(model))
 
+//Get Temporary S3 Url(expires: 30sec)
+router.get('/s3url', controller.s3Url)
+
 export default router
