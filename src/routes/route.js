@@ -8,6 +8,7 @@ const router = Router()
 // Homepage
 // -> curl -X GET http://localhost:3000/
 router.get('/', controller.index)
+router.get('/favicon.ico', controller.index)
 
 // Create New User
 // -> curl -X POST http://localhost:3000/alter -d 'user_name=hxyro'
