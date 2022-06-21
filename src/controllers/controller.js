@@ -44,7 +44,7 @@ const getUser = (model) => async (req, res) => {
       .populate('modifier')
       .orFail()
       .exec()
-    console.log(user)
+    // console.log(user)
     res.json(user).end()
   } catch (e) {
     console.log(e)
