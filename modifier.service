@@ -1,0 +1,16 @@
+[Unit]
+Description=Modifier web
+After=multi-user.target
+
+[Service]
+ExecStart=/home/ec2-user/.nvm/versions/node/v16.15.0/bin/node /home/ec2-user/modifier/build/index.js
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=modifier-web-server
+User=ec2-user
+EnvironmentFile=/home/ec2-user/modifier/.env
+
+[Install]
+WantedBy=multi-user.target
