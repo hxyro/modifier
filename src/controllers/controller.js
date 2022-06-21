@@ -138,7 +138,7 @@ const redirect = (model) => async (req, res) => {
 
 const s3Url = async (req, res) => {
   const url = await getTemporaryUrl()
-  res.send(`${url}`).end()
+  res.json(url).end()
 }
 
 export default {
