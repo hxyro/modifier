@@ -1,0 +1,38 @@
+{
+  "name": "@modifier/server",
+  "version": "1.0.0",
+  "description": "Next Generation Url Modifier",
+  "repository": "https://github.com/ulmodifier/modifier",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --exec babel-node \"src/index.js\"",
+    "build": "babel src -d build",
+    "start": "node build/index.js",
+    "format": "prettier --write \"src/**/*.js\"",
+    "lint": "eslint \"src/**/*.js\" --quiet"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.18.2",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1158.0",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.1",
+    "isbot": "^3.5.0",
+    "mongoose": "^6.3.6"
+  }
+}

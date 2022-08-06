@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "modifier",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {},
+  "scripts": {
+    "start": "./start.sh",
+    "server:dev": "yarn workspace @modifier/server dev ",
+    "server:lint": "yarn workspace @modifier/server lint",
+    "app:dev": "yarn workspace @modifier/app dev ",
+    "app:lint": "yarn workspace @modifier/app build "
+  }
+}

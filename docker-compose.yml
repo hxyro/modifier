@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      -  27027:27017
+  server:
+    container_name: server
+    image: hxyro/modifier-server
+    build:
+      context: ./packages/server/
+      dockerfile: Dockerfile
+    ports:
+      - 5000:80
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - REACT_APP_SERVER_URL=http://localhost:5000
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+  app:
+    container_name: app
+    image: hxyro/modifier-app
+    build:
+      context: ./packages/app/
+      dockerfile: Dockerfile
+    ports:
+      - 3000:80
+    environment:
+      - REACT_APP_SERVER_URL=http://localhost:5000
+    restart: unless-stopped
+    depends_on:
+      - server
