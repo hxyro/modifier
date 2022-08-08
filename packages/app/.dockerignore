@@ -1,6 +1,8 @@
-**/node_modules
-build
-.git
-.gitignore
-LICENSE
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
 README.md
+.next
+.git
+.env
