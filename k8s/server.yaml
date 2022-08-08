@@ -37,11 +37,11 @@ spec:
             configMapKeyRef:
               name:  configmap
               key:  server_port
-        - name:  REACT_APP_SERVER_URL
+        - name:  NEXT_PUBLIC_SERVER_URL
           valueFrom:
             configMapKeyRef:
               name:  configmap
-              key:  react_app_server_url
+              key:  next_public_server_url
         - name: MONGO_URI
           valueFrom:
             secretKeyRef:

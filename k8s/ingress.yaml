@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: modifer
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host:
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 80
+      - path: /u/a/m
+        pathType: Prefix
+        backend:
+          service:
+            name: server-service
+            port:
+              number: 80
+      - path: /a/
+        pathType: Prefix
+        backend:
+          service:
+            name: server-service
+            port:
+              number: 80
+---
+

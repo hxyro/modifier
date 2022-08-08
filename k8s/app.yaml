@@ -31,12 +31,6 @@ spec:
           limits:
             cpu: 500m
             memory: 200Mi
-        env:
-        - name:  REACT_APP_SERVER_URL
-          valueFrom:
-            configMapKeyRef:
-              name:  configmap
-              key:  react_app_server_url
         ports:
         - containerPort: 80
       restartPolicy: Always
@@ -50,7 +44,7 @@ metadata:
 spec:
   selector:
     app: app
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
     protocol: TCP

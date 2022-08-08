@@ -5,4 +5,4 @@ metadata:
   namespace: default
 data:
   server_port: "80"
-  react_app_server_url: server-service
+  next_public_server_url: modifier.com
