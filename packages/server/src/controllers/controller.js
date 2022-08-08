@@ -78,12 +78,10 @@ const createModifier = (model) => async (req, res) => {
         }
       )
     }
-    // res.type('.html')
-    const url = `${process.env.REACT_APP_SERVER_URL}/a/${modifier.modifier_name}`
-    // let result = linkPage(url, modifier.redirect_url)
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/a/${modifier.modifier_name}`
     res.json({ url, redirect_url }).end()
   } catch (e) {
-    console.log(e)
+    console.error(e)
     res.json(error.ServerError).end()
   }
 }

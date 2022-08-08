@@ -5,10 +5,10 @@ import { router } from './routes'
 import { db } from './utils'
 
 dotenv.config()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 80
 const MONGO_URI = process.env.MONGO_URI
 //
-const corsOptions = { origin: 'http://localhost:3000' }
+const corsOptions = { origin: '*' }
 
 const app = express()
 app.use(cors(corsOptions))
