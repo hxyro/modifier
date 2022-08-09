@@ -13,7 +13,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios'
 
-// const URL = process.env.NEXT_PUBLIC_SERVER_URL
 const url = `/u/a/m`
 
 function Intro() {

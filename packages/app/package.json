@@ -1,5 +1,7 @@
 {
-  "name": "nextapp",
+  "name": "@modifier/server",
+  "description": "Next Generation Url Modifier",
+  "repository": "https://github.com/ulmodifier/modifier",
   "version": "0.1.0",
   "private": true,
   "scripts": {

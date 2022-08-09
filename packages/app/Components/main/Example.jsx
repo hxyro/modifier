@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Col, Row } from 'reactstrap'
 import Slideshow from './Slideshow'
-import ogTele from '../../images/og-tele.jpeg'
-import ogTwit from '../../images/og-twit.jpeg'
-import ogLink from '../../images/og-link.jpeg'
-import mdTele from '../../images/md-tele.jpeg'
-import mdTwit from '../../images/md-twit.jpeg'
-import mdLink from '../../images/md-link.jpeg'
+import ogTele from '../../public/og-tele.jpeg'
+import ogTwit from '../../public/og-twit.jpeg'
+import ogLink from '../../public/og-link.jpeg'
+import mdTele from '../../public/md-tele.jpeg'
+import mdTwit from '../../public/md-twit.jpeg'
+import mdLink from '../../public/md-link.jpeg'
 
 const OgItems = [
   {
