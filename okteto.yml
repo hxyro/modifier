@@ -15,6 +15,16 @@ build:
     image: hxyro/modifier-app
 
   # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_NGINX_PROXY_REGISTRY: image registry
+  #  - OKTETO_BUILD_NGINX_PROXY_REPOSITORY: image repo
+  #  - OKTETO_BUILD_NGINX_PROXY_IMAGE: image name
+  #  - OKTETO_BUILD_NGINX_PROXY_TAG: image tag
+  nginx-proxy:
+    context: packages/nginx-proxy
+    dockerfile: Dockerfile
+    image: hxyro/modifier-nginx-proxy
+
+  # You can use the following env vars to refer to this image in your deploy commands:
   #  - OKTETO_BUILD_SERVER_REGISTRY: image registry
   #  - OKTETO_BUILD_SERVER_REPOSITORY: image repo
   #  - OKTETO_BUILD_SERVER_IMAGE: image name
