@@ -3,27 +3,22 @@ kind: Ingress
 metadata:
   name: modifer
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
   - host:
     http:
       paths:
-      - path: /
+      - path: /app(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: app-service
             port:
               number: 80
-      - path: /u/a/m
-        pathType: Prefix
-        backend:
-          service:
-            name: server-service
-            port:
-              number: 80
-      - path: /a/
+      - path: /server(/|$)(.*)
         pathType: Prefix
         backend:
           service:
