@@ -12,12 +12,13 @@ import {
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios'
+import { customAlphabet } from "nanoid"
 
+const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
 const url = `/u/a/m`
 
 function Intro() {
   const [redirect_url, setRedirect_url] = useState("")
-  const [modifier_name, setModifier_name] = useState("")
   const [title, setTitle] = useState("")
   const [asset_url, setAsset_url] = useState("")
   const [description, setDescription] = useState("")
@@ -26,11 +27,11 @@ function Intro() {
   const [isVisible, setVisible] = useState(false)
   const [show, setShow] = useState(false);
 
+
   const handleClose = () => setShow(false);
 
   const clear = () => {
     setRedirect_url("")
-    setModifier_name("")
     setTitle("")
     setAsset_url("")
     setDescription("")
@@ -41,6 +42,7 @@ function Intro() {
     setIferror("")
     setIfurl("")
     setShow(false)
+    const modifier_name = nanoid(6)
     const data = {
       "redirect_url": redirect_url,
       "modifier_name": modifier_name,
@@ -114,20 +116,20 @@ function Intro() {
             {isVisible ?
               (
                 <div>
-                  <InputGroup>
-                    <InputGroupText>
-                      <i className="bi bi-textarea-t"></i>
-                    </InputGroupText>
-                    <Input
-                      required
-                      type="text"
-                      name="modifier_name"
-                      value={modifier_name}
-                      onChange={(e) => setModifier_name(e.target.value)}
-                      id="url"
-                      placeholder="Custom url code (Alphanumeric characters)"
-                    />
-                  </InputGroup>
+                  {/* <InputGroup> */}
+                  {/*   <InputGroupText> */}
+                  {/*     <i className="bi bi-textarea-t"></i> */}
+                  {/*   </InputGroupText> */}
+                  {/*   <Input */}
+                  {/*     required */}
+                  {/*     type="text" */}
+                  {/*     name="modifier_name" */}
+                  {/*     value={modifier_name} */}
+                  {/*     onChange={(e) => setModifier_name(e.target.value)} */}
+                  {/*     id="url" */}
+                  {/*     placeholder="Custom url code (Alphanumeric characters)" */}
+                  {/*   /> */}
+                  {/* </InputGroup> */}
 
                   <InputGroup>
                     <InputGroupText>

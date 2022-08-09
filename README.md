@@ -1,2 +1,2 @@
 # Start Server
-```yarn start```
+```docker compose up```

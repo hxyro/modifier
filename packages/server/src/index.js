@@ -5,8 +5,7 @@ import { router } from './routes'
 import { db } from './utils'
 
 dotenv.config()
-const url = `mongodb://${process.env.MONGODB_HOST}:27017/`;
-const PORT = process.env.PORT || 80
+const PORT = process.env.PORT || 5000
 //
 const corsOptions = { origin: '*' }
 
@@ -17,7 +16,7 @@ app.use(urlencoded({ extended: true }))
 app.use(express.json())
 app.use('/', router)
 const start = async () => {
-  await db.connect(url).then(() => {
+  await db.connect('mongodb://mongodb:27017/').then(() => {
     console.log('connected')
     app.listen(PORT, () => console.log(`listening on: ${PORT}`))
   })

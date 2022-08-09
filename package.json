@@ -2,7 +2,8 @@
   "private": true,
   "name": "modifier",
   "workspaces": [
-    "packages/*"
+    "packages/app",
+    "packages/server"
   ],
   "dependencies": {},
   "scripts": {

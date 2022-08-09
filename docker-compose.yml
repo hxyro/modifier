@@ -15,10 +15,10 @@ services:
       context: ./packages/server/
       dockerfile: Dockerfile
     environment:
-      - MONGODB_HOST=mongodb
-      - NEXT_PUBLIC_SERVER_URL=http://localhost
+      # - MONGODB_HOST=mongodb
+      - NEXT_PUBLIC_SERVER_URL=https://nginx-proxy-hxyro.cloud.okteto.net
     ports:
-      -  80
+      -  5000
     depends_on:
       - mongodb
     restart: unless-stopped
@@ -30,10 +30,8 @@ services:
       context: ./packages/app/
       dockerfile: Dockerfile
     ports:
-      - 80
+      - 3000
     restart: unless-stopped
-    depends_on:
-      - server
 
   nginx-proxy:
     # container_name: proxy
