@@ -1,0 +1,32 @@
+appService:
+  namespace: default
+  name: app-service
+  type: ClusterIp
+  app: app
+  protocol: TCP
+  port: 80
+  targetPort: 80
+appDeployment:
+  namespace: default
+  name: app-deployment
+  app: app
+  replicas: 1
+  image: hxyro/modifier-app
+  containerPort: 80
+serverService:
+  namespace: default
+  name: server-service
+  type: ClusterIp
+  app: server
+  protocol: TCP
+  port: 80
+  targetPort: 80
+  imagePullPolicy: Always
+serverDeployment:
+  namespace: default
+  name: server-deployment
+  app: server
+  replicas: 1
+  image: hxyro/modifier-server
+  containerPort: 80
+  imagePullPolicy: Always
