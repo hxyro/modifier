@@ -3,38 +3,38 @@ version: "3.9"
 services:
   
   mongodb:
-    # container_name: mongodb
+    container_name: mongodb
     image: mongo
     ports:
       -  27017
 
   server:
-    # container_name: server
+    container_name: server
     image: hxyro/modifier-server
     build:
       context: ./packages/server/
       dockerfile: Dockerfile
     environment:
-      # - MONGODB_HOST=mongodb
-      - NEXT_PUBLIC_SERVER_URL=https://nginx-proxy-hxyro.cloud.okteto.net
+      - MONGO_URI=mongodb://mongodb:27017
+      - NEXT_PUBLIC_SERVER_URL=localhost
     ports:
-      -  5000
+      -  80
     depends_on:
       - mongodb
     restart: unless-stopped
   
   app:
-    # container_name: app
+    container_name: app
     image: hxyro/modifier-app
     build:
       context: ./packages/app/
       dockerfile: Dockerfile
     ports:
-      - 3000
+      - 80
     restart: unless-stopped
 
   nginx-proxy:
-    # container_name: proxy
+    container_name: proxy
     image: hxyro/modifier-nginx-proxy
     build:
       context: ./packages/nginx-proxy/
