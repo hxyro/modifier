@@ -32,6 +32,6 @@ COPY --from=builder --chown=xd:nodejs /app/build ./build
 
 COPY --from=prod-deps --chown=xd:nodejs /app/node_modules ./node_modules
 USER xd
-EXPOSE 5001
-ENV PORT 5001
+EXPOSE 80
+ENV PORT 80
 CMD ["node", "build/index.js"]
