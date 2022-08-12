@@ -1,0 +1,54 @@
+# # https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+  namespace: default
+spec:
+  serviceName: mongodb-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mongodb-container
+        image: mongo
+        resources:
+            requests:
+              cpu: 0.2
+              memory: 200Mi
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: pvc
+          mountPath: /data/db
+  volumeClaimTemplates:
+  - metadata:
+      name: pvc
+    spec:
+      storageClassName: manual
+      volumeName: pv
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 300Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  clusterIP: None
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017

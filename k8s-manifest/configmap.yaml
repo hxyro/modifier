@@ -5,4 +5,6 @@ metadata:
   namespace: default
 data:
   server_port: "80"
+  # change /etc/hosts for this one
   next_public_server_url: modifier.com
+  mongo_url: mongodb://mongodb-0.mongodb-service

@@ -44,24 +44,14 @@ spec:
               key:  next_public_server_url
         - name: MONGO_URI
           valueFrom:
-            secretKeyRef:
-              name:  secret
-              key:  database_url
-        - name: AWS_ACCESS_KEY_ID
-          valueFrom:
-            secretKeyRef:
-              name:  secret
-              key:  aws-access-key-id
-        - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name:  secret
-              key:  aws-secret-access-key
-        - name: AWS_BUCKET_NAME
-          valueFrom:
-            secretKeyRef:
-              name:  secret
-              key:  aws-bucket-name
+            configMapKeyRef:
+              name:  configmap
+              key:  mongo_url
+        # - name: MONGO_URI
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name:  secret
+        #       key:  mongo_url
         ports:
         - containerPort: 80
       restartPolicy: Always
