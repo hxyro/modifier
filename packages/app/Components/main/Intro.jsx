@@ -98,7 +98,7 @@ function Intro() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <h1 className="display-2">URL modifier</h1>
+      <h1 className="display-2">URL modifier V2</h1>
       <p className="lead">The Next-Gen URL Modifier</p>
       <p className="text-muted">Create Custom URLs & Embeds</p>
       <Row>
