@@ -16,7 +16,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - MONGO_URI=mongodb://mongodb:27017
-      - NEXT_PUBLIC_SERVER_URL=localhost
     ports:
       -  80
     depends_on:

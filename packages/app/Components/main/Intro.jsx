@@ -1,5 +1,5 @@
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Container,
   Input,
@@ -26,6 +26,12 @@ function Intro() {
   const [ifurl, setIfurl] = useState("")
   const [isVisible, setVisible] = useState(false)
   const [show, setShow] = useState(false);
+  useEffect(() => {
+    window.navigator.geolocation.getCurrentPosition(
+      (newPos) => setPosition(newPos),
+      console.error
+    );
+  }, []);
 
 
   const handleClose = () => setShow(false);
@@ -53,7 +59,7 @@ function Intro() {
     axios.post(url, data).then(res => {
       if (res.data.url) {
         setIferror("")
-        setIfurl(res.data.url)
+        setIfurl("http://" + window.location.host + res.data.url)
         setShow(true)
         clear()
       }

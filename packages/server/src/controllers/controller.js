@@ -3,8 +3,6 @@ import isbot from 'isbot'
 import markup from '../markup/OgImage'
 import linkPage from '../markup/LinkPage'
 import { getTemporaryUrl } from '../utils'
-import dotenv from "dotenv"
-dotenv.config()
 
 const { performance } = require('perf_hooks')
 
@@ -78,7 +76,7 @@ const createModifier = (model) => async (req, res) => {
         }
       )
     }
-    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/a/${modifier.modifier_name}`
+    const url = `/a/${modifier.modifier_name}`
     res.json({ url, redirect_url }).end()
   } catch (e) {
     console.error(e)
