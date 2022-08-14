@@ -1,7 +1,6 @@
 import { error, info } from '../utils'
 import isbot from 'isbot'
 import markup from '../markup/OgImage'
-import linkPage from '../markup/LinkPage'
 import { getTemporaryUrl } from '../utils'
 
 const { performance } = require('perf_hooks')
@@ -56,7 +55,8 @@ const getUser = (model) => async (req, res) => {
 
 const createModifier = (model) => async (req, res) => {
   const { user_name } = req.params
-  const { modifier_name, redirect_url, asset_url, title, description } = req.body
+  const { modifier_name, redirect_url, asset_url, title, description } =
+    req.body
   try {
     const modifier = await model.modifier.create({
       user_name,

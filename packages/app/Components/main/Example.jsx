@@ -1,81 +1,81 @@
-import { useState } from 'react'
-import { Col, Row } from 'reactstrap'
-import Slideshow from './Slideshow'
-import ogTele from '../../public/og-tele.jpeg'
-import ogTwit from '../../public/og-twit.jpeg'
-import ogLink from '../../public/og-link.jpeg'
-import mdTele from '../../public/md-tele.jpeg'
-import mdTwit from '../../public/md-twit.jpeg'
-import mdLink from '../../public/md-link.jpeg'
+import { useState } from "react";
+import { Col, Row } from "reactstrap";
+import Slideshow from "./Slideshow";
+import ogTele from "../../public/og-tele.jpeg";
+import ogTwit from "../../public/og-twit.jpeg";
+import ogLink from "../../public/og-link.jpeg";
+import mdTele from "../../public/md-tele.jpeg";
+import mdTwit from "../../public/md-twit.jpeg";
+import mdLink from "../../public/md-link.jpeg";
 
 const OgItems = [
   {
     src: ogTele,
-    altText: 'Original link telegram preview',
-    caption: 'Telegram',
+    altText: "Original link telegram preview",
+    caption: "Telegram",
     key: 1,
   },
   {
     src: ogTwit,
-    altText: 'Original link twitter preview',
-    caption: 'Twitter',
+    altText: "Original link twitter preview",
+    caption: "Twitter",
     key: 2,
   },
   {
     src: ogLink,
-    altText: 'Original link linkedin preview',
-    caption: 'LinkedIn',
+    altText: "Original link linkedin preview",
+    caption: "LinkedIn",
     key: 3,
   },
-]
+];
 
 const MdItems = [
   {
     src: mdTele,
-    altText: 'Modified link telegram preview',
-    caption: 'Telegram',
+    altText: "Modified link telegram preview",
+    caption: "Telegram",
     key: 1,
   },
   {
     src: mdTwit,
-    altText: 'Modified link twitter preview',
-    caption: 'Twitter',
+    altText: "Modified link twitter preview",
+    caption: "Twitter",
     key: 2,
   },
   {
     src: mdLink,
-    altText: 'Modified link linkedin preview',
-    caption: 'LinkedIn',
+    altText: "Modified link linkedin preview",
+    caption: "LinkedIn",
     key: 3,
   },
-]
+];
 
 function Example() {
-  const [activeIndex, setActiveIndex] = useState(1)
-  const ITEMS = 3
+  const [activeIndex, setActiveIndex] = useState(1);
+  const ITEMS = 3;
   const next = (animating) => {
-    if (animating) return
-    const nextIndex = activeIndex === ITEMS - 1 ? 0 : activeIndex + 1
-    setActiveIndex(nextIndex)
-  }
+    if (animating) return;
+    const nextIndex = activeIndex === ITEMS - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  };
 
   const previous = (animating) => {
-    if (animating) return
-    const nextIndex = activeIndex === 0 ? ITEMS - 1 : activeIndex - 1
-    setActiveIndex(nextIndex)
-  }
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? ITEMS - 1 : activeIndex - 1;
+    setActiveIndex(nextIndex);
+  };
 
   const goToIndex = (animating, newIndex) => {
-    if (animating) return
-    setActiveIndex(newIndex)
-  }
+    if (animating) return;
+    setActiveIndex(newIndex);
+  };
 
   const props = {
     activeIndex,
     next,
     previous,
     goToIndex,
-  }
+  };
 
   return (
     <>
@@ -91,7 +91,7 @@ function Example() {
         </Col>
       </Row>
     </>
-  )
+  );
 }
 
-export default Example
+export default Example;

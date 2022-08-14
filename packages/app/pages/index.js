@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import { Col, Container, Row } from 'reactstrap'
-import Main from '../Components/main/Main'
-import About from '../Components/sidebar/About'
-import Features from '../Components/sidebar/Features'
-import SideBar from '../Components/sidebar/SideBar'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Head from "next/head";
+import { Col, Container, Row } from "reactstrap";
+import Main from "../Components/main/Main";
+import About from "../Components/sidebar/About";
+import Features from "../Components/sidebar/Features";
+import SideBar from "../Components/sidebar/SideBar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   return (
@@ -28,5 +28,5 @@ export default function Home() {
         </Row>
       </Container>
     </div>
-  )
+  );
 }

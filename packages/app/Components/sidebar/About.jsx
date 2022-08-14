@@ -21,7 +21,7 @@ function About() {
         </a>
       </p>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
   Carousel,
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
-} from 'reactstrap'
-import Image from 'next/image'
+} from "reactstrap";
+import Image from "next/image";
 
 const Slideshow = (props) => {
-  const [animating, setAnimating] = useState(false)
+  const [animating, setAnimating] = useState(false);
 
   const slides = props.items.map((item) => {
     return (
@@ -22,19 +22,19 @@ const Slideshow = (props) => {
         <Image src={item.src} alt={item.altText} />
         <CarouselCaption captionHeader="" captionText="" />
       </CarouselItem>
-    )
-  })
+    );
+  });
 
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '100%',
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: "100%",
       }}
     >
-      <div style={{ flex: '1' }}>
+      <div style={{ flex: "1" }}>
         <Carousel
           activeIndex={props.activeIndex}
           next={() => props.next(animating)}
@@ -61,13 +61,13 @@ const Slideshow = (props) => {
           />
         </Carousel>
       </div>
-      <div style={{ justifySelf: 'end' }}>
+      <div style={{ justifySelf: "end" }}>
         <span className="my-2 p-2 text-white lead bg-secondary rounded-1 d-inline-block">
           {props.items[props.activeIndex].caption}
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Slideshow
+export default Slideshow;

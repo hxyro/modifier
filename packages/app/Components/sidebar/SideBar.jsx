@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Button, Offcanvas, OffcanvasBody, OffcanvasHeader } from 'reactstrap'
-import About from './About'
-import Features from './Features'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import React, { useState } from "react";
+import { Button, Offcanvas, OffcanvasBody, OffcanvasHeader } from "reactstrap";
+import About from "./About";
+import Features from "./Features";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const SideBar = (args) => {
-  const [open, setOpen] = useState()
-  const toggle = () => setOpen(!open)
+  const [open, setOpen] = useState();
+  const toggle = () => setOpen(!open);
 
   return (
     <div className="my-navbar d-lg-none btn-lg">
@@ -16,7 +16,7 @@ const SideBar = (args) => {
 
       <Button
         onClick={() => {
-          setOpen(true)
+          setOpen(true);
         }}
         className="toggle bg-primary text-white btn-lg"
       >
@@ -30,13 +30,13 @@ const SideBar = (args) => {
         </OffcanvasBody>
       </Offcanvas>
     </div>
-  )
-}
+  );
+};
 
 SideBar.args = {
   backdrop: true,
   fade: true,
   scrollable: false,
-}
+};
 
-export default SideBar
+export default SideBar;

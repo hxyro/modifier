@@ -32,9 +32,22 @@ router.get('/u/:user_name', controller.getUser(model))
 
 // Create Modifier
 // -> curl -X POST http://localhost:3000/u/hxyro/webpai -d 'redirect_url=https://webpai.vercel.app/&asset_url=https://webpai.vercel.app/webpai-new.png&title=webpai&description=nut'
-router.post('/u/:user_name/m',
-  validator.trimmed(['modifier_name', 'redirect_url', 'asset_url', 'title', 'description']),
-  validator.required(['modifier_name', 'redirect_url', 'asset_url', 'title', 'description']),
+router.post(
+  '/u/:user_name/m',
+  validator.trimmed([
+    'modifier_name',
+    'redirect_url',
+    'asset_url',
+    'title',
+    'description',
+  ]),
+  validator.required([
+    'modifier_name',
+    'redirect_url',
+    'asset_url',
+    'title',
+    'description',
+  ]),
   validator.validUrl(['redirect_url', 'asset_url']),
   validator.maxLength([
     { field: 'title', len: 30 },

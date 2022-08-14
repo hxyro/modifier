@@ -7,9 +7,8 @@
   ],
   "dependencies": {},
   "scripts": {
-    "server:dev": "yarn workspace @modifier/server dev ",
-    "server:lint": "yarn workspace @modifier/server lint",
-    "app:dev": "yarn workspace @modifier/app dev ",
-    "app:lint": "yarn workspace @modifier/app build "
+    "build": "echo '<++ app +++++++++++++>'; yarn workspace @modifier/app build ;echo '<++ server ++++++++++>'; yarn workspace @modifier/server build ",
+    "format": "echo '<++ app +++++++++++++>'; yarn workspace @modifier/app format ;echo '<++ server ++++++++++>'; yarn workspace @modifier/server format ",
+    "lint": "echo '<++ app +++++++++++++>'; yarn workspace @modifier/app lint ;echo '<++ server ++++++++++>'; yarn workspace @modifier/server lint "
   }
 }

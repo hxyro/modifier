@@ -1,4 +1,4 @@
-import { ListGroup, ListGroupItem } from 'reactstrap'
+import { ListGroup, ListGroupItem } from "reactstrap";
 
 function Features() {
   return (
@@ -11,7 +11,7 @@ function Features() {
         <ListGroupItem>Open Source!</ListGroupItem>
       </ListGroup>
     </div>
-  )
+  );
 }
 
-export default Features
+export default Features;

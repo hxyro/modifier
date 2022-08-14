@@ -1,6 +1,6 @@
-import Example from './Example'
-import Intro from './Intro'
-import { Col, Container, Row } from 'reactstrap'
+import Example from "./Example";
+import Intro from "./Intro";
+import { Col, Container, Row } from "reactstrap";
 
 function Main() {
   return (
@@ -18,7 +18,7 @@ function Main() {
         </Row>
       </Container>
     </Container>
-  )
+  );
 }
 
-export default Main
+export default Main;
